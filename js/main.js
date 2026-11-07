@@ -1,7 +1,7 @@
 "use strict";
 
 /*---------- あなたのLIFF IDを入力 ----------*/
-const MY_LIFF_ID = "2011066044-5TOjxXbK";
+const MY_LIFF_ID = "2011066044-aiW4ms3m";
 let userId = sessionStorage.getItem("lineUserId");
 let DWMId = "DWM_TikTok11-15";
 /*---------- ページ読み込み時のメイン処理 ----------*/
