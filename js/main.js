@@ -3,9 +3,20 @@
 /*---------- あなたのLIFF IDを入力 ----------*/
 const MY_LIFF_ID = "2011066044-5TOjxXbK";
 let userId = sessionStorage.getItem("lineUserId");
-let DWMId = "DWM_TikTok6-10";
+let DWMId = "DWM_TikTok11-15";
 /*---------- ページ読み込み時のメイン処理 ----------*/
 async function initializeLiff() {
+  // ローカルテストではLINEに接続せず、開発用IDでコンテンツを表示する
+  const isLocalTest =
+    ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname) ||
+    window.location.protocol === "file:";
+
+  if (isLocalTest) {
+    userId = userId || "local-test-user";
+    checkUnlock(userId, DWMId);
+    return;
+  }
+
   try {
     // 1. LIFFの初期化
     await liff.init({ liffId: MY_LIFF_ID });
@@ -149,7 +160,7 @@ async function checkUnlock(userId, DWMId) {
 window.onload = initializeLiff;
 
 /*---------- アンケート ----------*/
-const FORM_URL = "https://forms.gle/oBTJo1q61vsgHWQw5";
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfz9x7hNxuQJn4dUqrzL4XX2je1LVmWCMpLUbpFQ0Pve3QZ0w/viewform?usp=dialog";
 const surveyBtn = document.getElementById("survey-btn");
 
 function openSurvey() {
@@ -341,28 +352,28 @@ const puzzles = [
   },
   {
     question:
-      "<div class='l_img-box'><img src='img/TikTok_謎6_make-nagi.png' alt='謎6' class='m_img' width='500' height='500'></div><input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
-    answer: ["1", "１"],
+      "<div class='l_img-box nazo11-image-box'><img src='img/TikTok_謎11.png' alt='謎11' class='m_img' id='nazo11Image' width='500' height='500'><span class='nazo11-heart-wave is-hidden' id='nazo11HeartWave' aria-hidden='true'>💗</span><span class='nazo11-tap-count' id='nazo11TapCount' aria-live='polite'></span></div><p class=\"m_question_p\">答え方「〇〇〇と〇〇〇〇」（すべてひらがな）</p><input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
+    answer: ["はーととしんぞう"],
   },
   {
     question:
-      "<div class='l_img-box'><img src='img/TikTok_謎7.png' alt='謎7' class='m_img' width='500' height='500'></div><p class=\"m_question_p\">答えをひらがなで入力せよ</p> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
-    answer: "きらきらひかるそら",
+      "<div class='l_img-box'><img src='img/TikTok_謎12.png' alt='謎12' class='m_img' width='500' height='500'></div><p class=\"m_question_p\">A,B,Cで答えよ</p> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
+    answer:  ["C","c","ｃ","Ｃ"],
   },
   {
     question:
-      "<div class='l_img-box'><img src='img/TikTok_謎8.png' alt='謎8' class='m_img' width='500' height='500'></div><input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
-    answer: ["雷"],
+      "<div class='l_img-box'><img src='img/TikTok_謎13.png' alt='謎13' class='m_img' width='500' height='500'></div><p class=\"m_question_p\">答え方「①〇〇県、②〇〇県、③〇〇県」〇〇：漢字</p><input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
+    answer: ["①三重県、②神奈川県、③滋賀県"],
   },
   {
     question:
-      "<div class='l_img-box'><img src='img/TikTok_謎9.png' alt='謎9' class='m_img' width='500' height='500'></div> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
-    answer: ["A", "Ａ", "a", "ａ"],
+      "<div class='l_img-box'><img src='img/TikTok_謎14.png' alt='謎14' class='m_img' width='500' height='500'></div> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
+    answer: ["春巻き", "はるまき"],
   },
   {
     question:
-      "<div class='l_img-box'><img src='img/TikTok_謎10.png' alt='謎10' class='m_img' width='500' height='500'></div> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
-    answer: ["1", "１"],
+      "<div class='l_img-box'><img src='img/TikTok_謎15.png' alt='謎15' class='m_img' width='500' height='500'></div> <input type='text' id='answer' class='m_answer' placeholder='答えを入力' /> <button class='m_btn' id='solveBtn' onclick=\"submitAnswer()\"> 回答 </button> <p id='result'class class='m_question_p'></p>",
+    answer: ["ひらめき！"],
   },
 ];
 
@@ -370,6 +381,61 @@ function openQuestion() {
   document.getElementById("qP").innerHTML = puzzles[currentPuzzle].question;
   document.getElementById("answer").value = "";
   document.getElementById("result").textContent = "";
+
+  if (currentPuzzle === 1) {
+    initializeNazo11TapEffect();
+  }
+}
+
+// 謎11の画像中央を1000回タップするとハートの波紋アニメーションを表示
+function initializeNazo11TapEffect() {
+  const image = document.getElementById("nazo11Image");
+  if (!image || image.dataset.tapEffectReady) return;
+  image.dataset.tapEffectReady = "true";
+
+  let centerTapCount = 0;
+  let lastTapTime = 0;
+  let lastTapPosition = null;
+  image.addEventListener("pointerdown", (event) => {
+    const bounds = image.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    if (x < 0.35 || x > 0.65 || y < 0.15 || y > 0.65) return;
+
+    centerTapCount += 100;
+    const counter = document.getElementById("nazo11TapCount");
+
+    const now = Date.now();
+    const tapPosition = { x: event.clientX, y: event.clientY };
+    if (now - lastTapTime <= 350 && lastTapPosition) {
+      showNazo11FloatingHeart(tapPosition.x, tapPosition.y);
+      lastTapTime = 0;
+      lastTapPosition = null;
+    } else {
+      lastTapTime = now;
+      lastTapPosition = tapPosition;
+    }
+
+    if (centerTapCount >= 1000) {
+      document.getElementById("nazo11HeartWave")?.classList.remove("is-hidden");
+      if (counter) counter.textContent = "1000回タップ達成！💗";
+    }
+  });
+}
+
+function showNazo11FloatingHeart(clientX, clientY) {
+  const box = document.querySelector(".nazo11-image-box");
+  if (!box) return;
+
+  const bounds = box.getBoundingClientRect();
+  const heart = document.createElement("span");
+  heart.className = "nazo11-floating-heart";
+  heart.textContent = "💗";
+  heart.setAttribute("aria-hidden", "true");
+  heart.style.left = `${clientX - bounds.left}px`;
+  heart.style.top = `${clientY - bounds.top}px`;
+  box.appendChild(heart);
+  heart.addEventListener("animationend", () => heart.remove(), { once: true });
 }
 
 // モーダル表示
