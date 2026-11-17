@@ -13,7 +13,9 @@ async function initializeLiff() {
 
   if (isLocalTest) {
     userId = userId || "local-test-user";
-    checkUnlock(userId, DWMId);
+    // ローカルではLINE認証とサーバー側の解放判定を飛ばして画面を確認する
+    document.getElementById("sectionCheck").classList.add("js_hidden");
+    document.getElementById("premiumContent").classList.remove("js_hidden");
     return;
   }
 
